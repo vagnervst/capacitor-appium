@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import { Plugins } from '@capacitor/core'
+const { LocalNotifications } = Plugins
+
+const notify = () => LocalNotifications.schedule({
+  notifications: [{
+    title: "Oh!",
+    body: "It's a notification!",
+    id: 1,
+    sound: null,
+    attachments: null,
+    actionTypeId: "",
+    extra: null
+  }]
+})
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={notify}>What in Oblivion is that?!</button>
     </div>
-  );
+  )
 }
 
 export default App;
