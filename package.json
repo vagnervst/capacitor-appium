@@ -7,6 +7,7 @@
     "@capacitor/android": "2.4.4",
     "@capacitor/cli": "^2.4.4",
     "@capacitor/core": "^2.4.4",
+    "@capacitor/ios": "2.4.4",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.2",
     "@svgr/webpack": "5.4.0",
     "@testing-library/jest-dom": "^5.11.4",
