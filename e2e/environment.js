@@ -7,24 +7,36 @@ const { resolve } = require('path')
 // const pagarme = require('../src/clients/pagarme')
 
 const APPIUM_PORT = 4723
+const PLATFORM = process.env.PLATFORM
 
 const initializeDriver = (driver) => {
-  const options = {
-    autoLaunch: true,
+  const iosOptions = {
+    platformName: 'iOS',
+    platformVersion: '13.6',
+    deviceName: 'iPhone 8',
+    automationName: 'XCUITest',
+    autoAcceptAlerts: true,
+    app: resolve('./ios/App/Build/App/Build/Products/Debug-iphonesimulator/App.app')
+  }
+
+  const androidOptions = {
     platformName: 'Android',
     platformVersion: '9',
     deviceName: 'Android Emulator',
+    automationName: 'UIAutomator2',
     app: resolve('./android/app/build/outputs/apk/debug/app-debug.apk'),
     appPackage: 'com.hybridapp.app',
     appActivity: '.MainActivity',
-    automationName: 'UIAutomator2',
+  }
+
+  const platformOptions = PLATFORM === 'iOS'
+    ? iosOptions
+    : androidOptions
+
+  const options = {
+    autoLaunch: true,
     autoWebview: true,
-    desiredCapabilities: {
-      autoWebview: true,
-    },
-    // forceEspressoRebuild: true,
-    espressoBuildConfig: resolve('./e2e/buildconfig.json'),
-    // fullReset: true,
+    ...platformOptions,
   }
 
   return driver.init(options)

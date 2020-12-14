@@ -76,7 +76,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "gradle:debug": "cd android && ./gradlew assembleDebug",
-    "test": "node scripts/test.js",
+    "test": "jest",
     "capacitor": "cap"
   },
   "eslintConfig": {
